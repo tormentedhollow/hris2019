@@ -8,6 +8,7 @@ export const environment = {
   production: false,
   appName: 'Human Resource Information System',
   envName: 'DEV',
+  test: false,
   versions: {
     app: packageJson.version
   }

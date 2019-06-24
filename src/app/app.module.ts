@@ -18,6 +18,10 @@ import { Page4Component } from './pds/page4/page4.component';
 import { DetailComponent } from './employees/detail/detail.component';
 import { PropertyComponent, DialogOverviewExampleDialog } from './property/property.component';
 import { ViewComponent, DialogOverviewExampleDialog2 } from './property/view/view.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutConfirmationDialogComponent } from './login/logout.component';
+
+import { CoreModule } from './_core/core.module'; 
 
 @NgModule({
   declarations: [
@@ -33,16 +37,20 @@ import { ViewComponent, DialogOverviewExampleDialog2 } from './property/view/vie
     PropertyComponent,
     DialogOverviewExampleDialog,
     DialogOverviewExampleDialog2,
-    ViewComponent
+    ViewComponent,
+    LoginComponent,
+    LogoutConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    CoreModule,
+    SharedModule,
+
   ],
-  entryComponents: [ DialogOverviewExampleDialog, DialogOverviewExampleDialog2],                                                                                       
+  entryComponents: [ DialogOverviewExampleDialog, DialogOverviewExampleDialog2, LogoutConfirmationDialogComponent],                                                                                       
   providers: [AnimationsService],
   bootstrap: [AppComponent]
 })

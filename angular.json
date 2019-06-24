@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "hris2019"
+  "defaultProject": "hris2019",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

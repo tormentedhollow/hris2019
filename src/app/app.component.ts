@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { routeAnimations, AnimationsService } from './_animations/index';
 import { Router } from '@angular/router';
-import { environment as env } from '@env/environment'
+import { environment as env } from '@env/environment';
+import { select, Store } from '@ngrx/store'
+import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { LogoutConfirmationDialogComponent } from './login/logout.component';
+import {  AppState, selectIsAuthenticated, ActionAuthLogout } from './_core/core.module';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +22,9 @@ export class AppComponent {
 
   title_short = 'HRMIS';
   title_long = 'Human Resource Management Information System';
+
+  isAuthenticated$: Observable<boolean>;
+
 
   menu: any[] = [
     {
@@ -42,16 +50,38 @@ export class AppComponent {
     { title: 'Log-out', route: 'logout'}
   ];
 
-  constructor(private router: Router, private animationService: AnimationsService) {
+  constructor(
+    private router: Router, 
+    private animationService: AnimationsService,  
+    private dialog: MatDialog,
+    private store: Store<AppState>) {
     this.animationService.updateRouteAnimationType(true, true);
+
    }
 
   ngOnInit() {
+    this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   }
 
-    logout(){
-      this.router.navigate(['']);
+  onLoginClick() {
+    console.log('hello');
   }
+
+  onLogoutClick(){
+     const dialogRef = this.dialog.open<
+     LogoutConfirmationDialogComponent,
+     undefined,
+     boolean>
+     (LogoutConfirmationDialogComponent);
+
+     dialogRef.afterClosed().subscribe(result=>{
+       if(result){
+        this.store.dispatch(new ActionAuthLogout());
+       }
+     })
+  }
+
+
 
 }
 
