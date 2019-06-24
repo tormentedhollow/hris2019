@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row item">
+        <div class="col-md-10">
+          <h3>Property Inventory</h3>
+        </div>
+        <div  class="col-md-2">
+            <button style="margin:5px;" mat-raised-button class="information" (click)="add()">
+                ADD ITEM
+              </button> 
+              <br>
+        </div>
+  
+      </div>
+    <hr>
+    <div class="row item">
+        <div class="col-md-8">
+          <h5>Name: {{name}} </h5>
+          <h5>Address: {{address}} </h5>
+          <h5>Division: {{div}} </h5>
+        </div>
+        <div class="col-md-4">
+            <img *ngIf="photo" src="assets/photo/{{photo}}" class="rounded img-thumbnail float-right" width="80" height= "80" alt="...">
+            <img *ngIf="!photo" src="assets/photo/no.gif" alt="" class="rounded img-thumbnail float-right" width="80" height= "80">
+        </div>
+    </div>
+    <div class="row item example-container">
+        <table mat-table [dataSource]="Properties">
+
+            <ng-container matColumnDef="Account">
+              <th mat-header-cell *matHeaderCellDef> Account</th>
+              <td mat-cell *matCellDef="let element"> {{element.Account}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="item">
+              <th mat-header-cell *matHeaderCellDef> Item</th>
+              <td mat-cell *matCellDef="let element"> {{element.item}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date_acquired">
+                <th mat-header-cell *matHeaderCellDef> Date Acquired </th>
+                <td mat-cell *matCellDef="let element"> {{element.date_acquired}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="property_number">
+                  <th mat-header-cell *matHeaderCellDef> Property Number </th>
+                  <td mat-cell *matCellDef="let element"> {{element.property_number}} </td>
+                </ng-container>
+          
+            <ng-container matColumnDef="qty">
+                <th mat-header-cell *matHeaderCellDef> Quantity</th>
+                <td mat-cell *matCellDef="let element"> {{element.qty | number}} </td>
+              </ng-container>
+        
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef> Unit Value </th>
+                    <td mat-cell *matCellDef="let element"> {{element.value | number}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="total">
+                      <th mat-header-cell *matHeaderCellDef> Total</th>
+                      <td mat-cell *matCellDef="let element"> {{element.qty * element.value | number}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="serviceable">
+                        <th mat-header-cell *matHeaderCellDef> Serviceable</th>
+                        <td mat-cell *matCellDef="let element"> 
+                          {{element.serviceable == 1 ? '✔': '✖'}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="remarks">
+                          <th mat-header-cell *matHeaderCellDef> Remarks</th>
+                          <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+                      </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element; let i = index"> 
+                        <button mat-button matTooltip="Edit" (click)="edit(element)">
+                          <i class="fa fa-edit text-center"  aria-hidden="true"></i></button> 
+                          <button mat-button matTooltip="Delete" (click)="delete(element.id, i)">
+                              <i class="fa fa-trash text-center"  aria-hidden="true"></i></button> 
+                      </td>
+                  </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+
+</div>

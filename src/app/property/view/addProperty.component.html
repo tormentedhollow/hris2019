@@ -1,0 +1,39 @@
+<h1 mat-dialog-title *ngIf="edit">EDIT PROPERTY</h1>
+<h1 mat-dialog-title *ngIf="!edit">ADD PROPERTY</h1>
+<div mat-dialog-content>
+<mat-form-field class="example-full-width" >
+<mat-label>Select article title:</mat-label>
+  <mat-select  [(ngModel)]="newProp.Account" name="Account">
+    <mat-option *ngFor="let div of accounts" [value]="div.value">
+      {{div.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="example-full-width" >
+        <input matInput  placeholder="Item Name" [(ngModel)]="newProp.item" name="item">
+      </mat-form-field>
+   <mat-form-field class="example-full-width" >
+      <textarea matInput placeholder="Description" [(ngModel)]="newProp.Description" name="Description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" >
+    <input matInput type="date" placeholder="Date Acquired" [(ngModel)]="newProp.date_acquired" name="date_acquired">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" >
+        <input matInput  placeholder="Property Number" [(ngModel)]="newProp.property_number" name="property_number">
+    </mat-form-field>
+<mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Quantity" [(ngModel)]="newProp.qty" name="qty">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type="number" placeholder="Unit Value" [(ngModel)]="newProp.value" name="value">
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="newProp.serviceable" name="serviceable">Serviceable?</mat-checkbox>
+      <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Remarks" [(ngModel)]="newProp.remarks" name="remarks"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button *ngIf="!edit" mat-button cdkFocusInitial [mat-dialog-close]="newProp" (click)="ok()">Ok</button>
+  <button *ngIf="edit" mat-button cdkFocusInitial [mat-dialog-close]="data.animal" (click)="update()">Update</button>
+</div>

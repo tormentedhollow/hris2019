@@ -1,0 +1,169 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>IV. Civil Service Eligibility</mat-card-title>
+    <div class="row">
+        <div class="col-10">
+            <mat-form-field class="example-full-width">
+                <input matInput name="CS" [(ngModel)]="newCSE.CS" placeholder="Career Service/ RA 1080 (Board/ BAR) Under Special Laws/ CES/ CSEE">
+            </mat-form-field>
+        </div>
+        <div class="col-2">
+            <mat-form-field class="example-full-width" >
+                <input matInput name="Rating" [(ngModel)]="newCSE.Rating" placeholder="Rating">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <mat-form-field class="example-full-width">
+                <input matInput name="DoEC" [(ngModel)]="newCSE.DoEC" placeholder="Date of Examination" type="date">
+            </mat-form-field>
+        </div>
+        <div class="col-8">
+            <mat-form-field class="example-full-width" >
+                <input matInput name="PoEC" [(ngModel)]="newCSE.PoEC" placeholder="Place of Examination/Conferment">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput name="License_Num" [(ngModel)]="newCSE.License_Num" placeholder="License Number">
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="example-full-width" >
+                <input matInput name="License_DoR" [(ngModel)]="newCSE.License_DoR" placeholder="Date of Release" type="date">
+            </mat-form-field>
+        </div>
+        <div class="col">     
+            <button mat-raised-button color="primary" (click)="addCSE()">Add CSE</button>          
+        </div>
+    </div>
+    <div class="row">
+        	<table class="table table-striped  table-condensed  col-sm-12" >
+                    <thead>
+                      <tr class="table-success">
+                          <th>Career Service/ RA 1080 (Board/ BAR) Under Special Laws/ CES/ CSEE</th>
+                          <th>Rating</th>
+                          <th>Date of Examination/ Conferment</th>
+                          <th>Place of Examination/ Conferment</th>
+                          <th>License Number</th>
+                          <th>Date of Release</th>
+                          <th>Action</th>        
+                      </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let cse of CSEs; let i = index;">
+                       <td>{{cse.CS}}</td>
+                       <td>{{cse.Rating}}</td>
+                       <td>{{cse.DoEC}}</td>
+                       <td>{{cse.PoEC}}</td>
+                       <td>{{cse.License_Num}}</td>
+                      <td>{{cse.License_DoR}}</td>
+                     
+                       <td><button type="button" class="btn btn-danger btn-circle" (click)="removeCSE(i)"><i class="fa fa-times"></i></button></td>
+                     </tr>
+                  </tbody>			        
+        </table>
+    </div>
+    
+  </mat-card>
+  <mat-card>
+      <mat-card-title>V. Work Experience</mat-card-title>
+      <mat-card-subtitle>Include private employmeny. Start from your current work</mat-card-subtitle>
+      <div class="row">
+          <div class="col">
+              <mat-form-field class="example-full-width">
+                  <input matInput name="_from" [(ngModel)]="newWE._from" placeholder="Inclusive Dates" type="date">
+                  <mat-hint>From</mat-hint>
+              </mat-form-field>
+          </div>
+          <div class="col">
+              <mat-form-field class="example-full-width" >
+                  <input matInput name="_to" [(ngModel)]="newWE._to" placeholder="Inclusive Dates" type="date">
+                  <mat-hint>To</mat-hint>
+              </mat-form-field>
+          </div>
+          <div class="col">
+              <mat-form-field class="example-full-width" >
+                  <input matInput name="position" [(ngModel)]="newWE.position" placeholder="Position Title">
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <mat-form-field class="example-full-width">
+                  <input matInput name="office" [(ngModel)]="newWE.office" placeholder="Department/Agency/Office/Company">
+              </mat-form-field>
+          </div>
+          <div class="col">
+              <mat-form-field class="example-full-width" >
+                  <input matInput name="salary" [(ngModel)]="newWE.salary" placeholder="Monthly Salary" type="number">
+              </mat-form-field>
+          </div>
+          <div class="col">
+              <mat-form-field class="example-full-width" >
+                  <input matInput name="sg" [(ngModel)]="newWE.sg" placeholder="Salary Grade & Step">
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <mat-form-field>
+                  <mat-select name="status" [(ngModel)]="newWE.status" placeholder="Status of Appointment">
+                    <mat-option  value="Contractual">Contractual</mat-option>
+                    <mat-option  value="Permanent">Permanent</mat-option>
+                    <mat-option  value="Temporary">Temporary</mat-option>
+                    <mat-option  value="Job Order">Job Order</mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="col">
+              <mat-form-field>
+                  <mat-select name="gov_service" [(ngModel)]="newWE.gov_service" placeholder="Government Service">
+                    <mat-option  value="Yes">Yes</mat-option>
+                    <mat-option  value="No">No</mat-option>
+     
+                  </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="col">     
+              <button mat-raised-button color="primary" (click)="addWE()">Add Work Experience</button>          
+          </div>
+      </div>
+      <div class="row">
+            <table class="table table-striped table-bordered col-sm-12" >
+                    <thead>
+                      <tr class="table-success">
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Position Title</th>
+                          <th>Department/ Agency/ Office/ Company</th>
+                          <th>Salary Grade & Step Incriment</th>
+                          <th>Status of Appointment</th>
+                          <th>Government Service</th>
+                          <th>Action</th>        
+                      </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let work of WEs; let i = index;">
+                       <td>{{work._from}}</td>
+                       <td>{{work._to}}</td>
+                       <td>{{work.position}}</td>
+                       <td>{{work.office}}</td>
+                       <td>{{work.sg}}</td>
+                      <td>{{work.status}}</td>
+                      <td>{{work.gov_service}}</td>
+                     
+                       <td><button type="button" class="btn btn-danger btn-circle" (click)="removeWE(i)"><i class="fa fa-times"></i></button></td>
+                     </tr>
+                  </tbody>			        
+                         </table>
+      </div>
+    </mat-card>
+    <div>
+            <button mat-button matStepperPrevious>Previous</button>
+            <button mat-button matStepperNext >Next</button>
+        </div>
+</div>

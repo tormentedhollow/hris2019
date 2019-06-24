@@ -1,0 +1,18 @@
+mat-form-field, .mat-form-field {
+    min-height:auto;
+    padding: 12px 16px 12px 12px;
+  }
+  mat-card-content{
+      padding: 12px 16px 12px 12px !important;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  mat-card {
+    margin: 0 0 20px 0;
+  }
+  table td{
+    color: whitesmoke
+  }

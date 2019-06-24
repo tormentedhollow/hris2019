@@ -1,0 +1,200 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT / PEOPLE / VOLUNTARY ORGANIZATION/S
+        </mat-card-title>
+        <div class="row">
+            <div class="col-5">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="Org_Name" [(ngModel)]="newVol.Org_Name"
+                        placeholder="Name & Address of Organizations">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="IDA_From" [(ngModel)]="newVol.IDA_From" placeholder="Inclusive Dates"
+                        type="date">
+                    <mat-hint>From</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="IDA_To" [(ngModel)]="newVol.IDA_To" placeholder="Inclusive Dates" type="date">
+                    <mat-hint>To</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="Hours" [(ngModel)]="newVol.Hours" placeholder="Number of Hours" type="number">
+                </mat-form-field>
+            </div>
+            <div class="col-5">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="PosNoW" [(ngModel)]="newVol.PosNoW" placeholder="Position / Nature of Work">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="addVol()">Add CSE</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-bordered  col-sm-12">
+                <thead>
+                    <tr class="table-success">
+                        <th>Name & Address of Organization</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Number of Hours</th>
+                        <th>Position / Nature of Work</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vol of voluntaries; let i = index;">
+                        <td>{{vol.Org_Name}}</td>
+                        <td>{{vol.IDA_From}}</td>
+                        <td>{{vol.IDA_To}}</td>
+                        <td>{{vol.Hours}}</td>
+                        <td>{{vol.PosNoW}}</td>
+
+                        <td><button type="button" class="btn btn-danger btn-circle" (click)="removeVol(i)"><i
+                                    class="fa fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </mat-card>
+    <mat-card>
+        <mat-card-title>VII. TRAINING PROGRAMS</mat-card-title>
+        <mat-card-subtitle>Start from the most recent training</mat-card-subtitle>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="Title" [(ngModel)]="newTrain.Title"
+                        placeholder="Title of Seminar/Conference/Workshop/Short Courses">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="IDA_From" [(ngModel)]="newTrain.IDA_From" placeholder="Inclusive Dates"
+                        type="date">
+                    <mat-hint>From</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="IDA_To" [(ngModel)]="newTrain.IDA_To" placeholder="Inclusive Dates"
+                        type="date">
+                    <mat-hint>To</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="Hours" [(ngModel)]="newTrain.Hours" placeholder="Number of Hours"
+                        type="number">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="Conducted_By" [(ngModel)]="newTrain.Conducted_By"
+                        placeholder="Conducted/Sponsored by">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="primary" (click)="addTrain()">Add Work Experience</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-bordered  col-sm-12">
+                <thead>
+                    <tr class="table-success">
+                        <th>Title of Seminar/ Conference/ Workshop/ Short Courses</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Number of Hours</th>
+                        <th>Conducted/ Sponsored By</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let train of trainings; let i = index;">
+                        <td>{{train.Title}}</td>
+                        <td>{{train.IDA_From}}</td>
+                        <td>{{train.IDA_To}}</td>
+                        <td>{{train.Hours}}</td>
+                        <td>{{train.Conducted_By}}</td>
+
+                        <td><button type="button" class="btn btn-danger btn-circle" (click)="removeTrain(i)"><i
+                                    class="fa fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title>VIII. OTHER INFORMATION</mat-card-title>
+        <mat-card-subtitle>Type and hit enter to submit</mat-card-subtitle>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="sp_name" [(ngModel)]="sp_name" (keyup.enter)="addSkills()"
+                        placeholder="Special Skills / Hobbies">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="na_name" [(ngModel)]="na_name" (keyup.enter)="addNA()"
+                        placeholder="Non-Academic Distinction/Recognition">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <input matInput name="m_name" [(ngModel)]="m_name" (keyup.enter)="addMembership()"
+                        placeholder="Membership in Association">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped table-bordered  col-sm-12">
+                    <tr *ngFor="let skill of skills; let i = index;">
+                        <td> {{skill}} </td>
+                        <td> <button type="button" class="btn btn-danger btn-circle" (click)="removeSkills(i)"><i
+                                    class="fa fa-times"></i></button> </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table table-striped table-bordered  col-sm-12">
+                    <tr *ngFor="let na of nonacademic; let i = index;">
+                        <td> {{na}} </td>
+                        <td> <button type="button" class="btn btn-danger btn-circle" (click)="removeNA(i)"><i
+                                    class="fa fa-times"></i></button> </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table table-striped table-bordered col-sm-12">
+                    <tr *ngFor="let mem of membership; let i = index;">
+                        <td> {{mem}} </td>
+                        <td> <button type="button" class="btn btn-danger btn-circle" (click)="removeMembership(i)"><i
+                                    class="fa fa-times"></i></button> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </mat-card>
+    <div>
+            <button mat-button matStepperPrevious>Previous</button>
+            <button mat-button matStepperNext >Next</button>
+        </div>
+</div>

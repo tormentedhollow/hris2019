@@ -1,0 +1,163 @@
+<div class="container">
+  <div class="row item">
+      <div class="col-12" >
+          <h2>Human Resorce Dashboard</h2>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card class="example-card">
+        <mat-card-header [style.backgroundColor]="'#a00037'">
+          <mat-card-title>
+            <i class="fa fa-birthday-cake text-center" aria-hidden="true"> {{months[mo-1]}} Birthdays</i>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>       
+          <div style="display: block">
+            <table class="table table-bordered table-sm table-responsive" height="300">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                   <th>Birthday</th>
+                  <th>Age</th>
+                 
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of birthday; let i = index">
+                <tr [style.background-color]="getStyleBday(item.dob)" >
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.sname}}, {{item.fname}}</td>
+                  <td>{{item.dob|date:'MMM d'}}</td>
+                  <td>{{getAge(item.dob)}}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>           
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="example-card">
+        <mat-card-header [style.backgroundColor]="'#5c007a'">
+          <mat-card-title>
+            <i class="	fa fa-angle-double-up" aria-hidden="true"> Distribution by Salary Grade</i>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>       
+          <div style="display: block">
+            <canvas baseChart height="300"
+              [data]="pieChartSalaryGradeData"
+              [labels]="pieChartSalaryGradeLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+        
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>           
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="example-card">
+        <mat-card-header [style.backgroundColor]="'#00227b'">
+          <mat-card-title>
+            <i class="fa fa-angle-double-up" aria-hidden="true"> Distribution by Step Increment</i>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>       
+          <div style="display: block">
+            <canvas baseChart height="300"
+              [data]="pieCharStepData"
+              [labels]="pieChartStepLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+        
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>           
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <mat-card class="example-card">
+      <mat-card-header [style.backgroundColor]="'#00701a'">
+        <mat-card-title>
+            <i class="fa fa-venus-mars" aria-hidden="true"> Distribution by Gender</i>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>       
+        <div style="display: block">
+          <canvas baseChart height="300"
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="doughnutChartType"
+            [options]="pieChartOptions"
+      
+            [legend]="pieChartLegend">
+          </canvas>
+        </div>           
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-md-4">
+    <mat-card class="example-card" *ngIf="barChartData">
+      <mat-card-header [style.backgroundColor]="'#005b4f'">
+        <mat-card-title>
+          <i class="	fa fa-user-circle-o" aria-hidden="true"> Distribution by Marital Status</i>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>       
+        <div style="display: block">
+          <canvas baseChart height="300"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+        
+            [chartType]="barChartType"
+            [options]="pieChartOptions"
+      
+            >
+          </canvas>
+        </div>           
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-md-4">
+    <mat-card class="example-card">
+      <mat-card-header [style.backgroundColor]="'#b91400'">
+        <mat-card-title>
+          <i class="fa fa-child" aria-hidden="true"> Distribution by Age Bracket</i>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>       
+        <div style="display: block">
+          <canvas baseChart height="300"
+            [data]="barChartAgeData"
+            [labels]="barChartAgeLabels"
+            [chartType]="barChartType"
+            [options]="pieChartOptions"
+      
+            [legend]="pieChartLegend">
+          </canvas>
+        </div>           
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>
