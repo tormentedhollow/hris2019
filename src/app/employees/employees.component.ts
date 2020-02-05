@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HrmisService } from '../_services/hrmis.service';
 import {MatTableDataSource} from '@angular/material';
 import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employees',
@@ -12,15 +13,16 @@ import { Router } from '@angular/router';
 export class EmployeesComponent implements OnInit {
 
   Employees: any;
+  isLoading = true;
 
   displayedColumns: string[] = ['Photo', 'Sname', 'Fname', 'Mname', 'DoB', 'R_Address', 'actions'];
 
-  constructor(private hrmisService: HrmisService, private router: Router) { }
+  constructor(private hrmisService: HrmisService, private router: Router, public dialog: MatDialog) { }
 
   getEmployee () {
     this.hrmisService.getEmployee().subscribe((data : any)=>{
       this.Employees = new MatTableDataSource(data.data);
-      console.log(data);
+      this.isLoading = false;
     });
   };
 
@@ -35,6 +37,32 @@ export class EmployeesComponent implements OnInit {
   }
   ngOnInit() {
     this.getEmployee();
+  }
+
+  onUpload(params){
+    const dialogRef = this.dialog.open(UploadDialog, {
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
+  }
+
+}
+@Component({
+  templateUrl: 'uploadPhoto.html',
+})
+export class UploadDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<UploadDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

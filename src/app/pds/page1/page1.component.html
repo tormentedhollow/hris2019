@@ -1,75 +1,70 @@
 <div class="container">  
-<form #pdsForm="ngForm">   
+<form [formGroup]="firstFormGroup"  >
 <mat-card>
 <mat-card-title>I. Personal Information</mat-card-title>
 <mat-card-content>
     <div class="row">
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Sname" name="Sname" placeholder="Surname"  required>
+                <input matInput formControlName="Sname" name="Sname" placeholder="Surname"  required>
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width" >
-                <input matInput [(ngModel)]="newEmployee.Fname" name="Fname" placeholder="Firstname"  required>
+                <input matInput formControlName="Fname" name="Fname" placeholder="Firstname"  required>
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Mname" name="Mname" placeholder="Middlename"  required>
+                <input matInput formControlName="Mname" name="Mname" placeholder="Middlename"  required>
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field>
-                <mat-select [(ngModel)]="newEmployee.Extname" name="Extname" placeholder="Extension">
+                <mat-select formControlName="Extname" name="Extname" placeholder="Extension">
                   <mat-option  value="Jr.">Jr.</mat-option>
                   <mat-option  value="Sr.">Sr.</mat-option>
                   <mat-option  value="III">III</mat-option>
                   <mat-option  value="IV">IV</mat-option>
                 </mat-select>
             </mat-form-field>
+        </div>       
+    </div>      
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="DoB" name="DoB" placeholder="Birthday" type="date"  required>
+            </mat-form-field>
         </div>
-      
-       
-     
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="PoB" name="PoB"placeholder="Place of Birth"  required>
+            </mat-form-field>
         </div>
-        
-       <div class="row">
-            <div class="col">
-                <mat-form-field class="example-full-width">
-                    <input matInput [(ngModel)]="newEmployee.DoB" name="DoB" placeholder="Birthday" type="date"  required>
-                </mat-form-field>
-            </div>
-            <div class="col">
-                <mat-form-field class="example-full-width">
-                    <input matInput [(ngModel)]="newEmployee.PoB" name="PoB"placeholder="Place of Birth"  required>
-                </mat-form-field>
-            </div>
-            <div class="col">
-                <mat-form-field>
-                    <mat-select [(ngModel)]="newEmployee.sex" name="sex" placeholder="Sex"  required>
-                      <mat-option  value="Male">Male</mat-option>
-                      <mat-option  value="Female">Female</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col">
-                <mat-form-field>
-                    <mat-select [(ngModel)]="newEmployee.civil_status" name="civil_status" placeholder="Civil Status"  required>
-                      <mat-option  value="Single">Single</mat-option>
-                      <mat-option  value="Married">Married</mat-option>
-                      <mat-option  value="Annuled">Annuled</mat-option>
-                      <mat-option  value="Widowed">Widowed</mat-option>
-                      <mat-option  value="Separated">Separated</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-select formControlName="sex" name="sex" placeholder="Sex"  required>
+                    <mat-option  value="Male">Male</mat-option>
+                    <mat-option  value="Female">Female</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-     
-     <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-select formControlName="civil_status" name="civil_status" placeholder="Civil Status"  required>
+                    <mat-option  value="Single">Single</mat-option>
+                    <mat-option  value="Married">Married</mat-option>
+                    <mat-option  value="Annuled">Annuled</mat-option>
+                    <mat-option  value="Widowed">Widowed</mat-option>
+                    <mat-option  value="Separated">Separated</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>   
+    <div class="row">
          <div class="col">
             <mat-form-field>
-                <mat-select [(ngModel)]="newEmployee.citizenship" name="citizenship" placeholder="Citizenship"  required>
+                <mat-select formControlName="citizenship" name="citizenship" placeholder="Citizenship"  required>
                   <mat-option  value="Filipino">Filipino</mat-option>
                   <mat-option  value="Others">Others</mat-option>
                 </mat-select>
@@ -77,325 +72,325 @@
          </div>
          <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Height" name="Height" placeholder="Height" type="number">
+                <input matInput formControlName="Height" name="Height" placeholder="Height" type="number" required>
             </mat-form-field>
          </div>
          <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Weight" name="Weight" placeholder="Weight" type="number">
+                <input matInput formControlName="Weight" name="Weight" placeholder="Weight" type="number" required>
             </mat-form-field>
          </div>
-         <div class="col">
-               
+         <div class="col">               
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.BT" name="BT" placeholder="Blood Type">
+            <input matInput formControlName="BT" name="BT" placeholder="Blood Type">
         </mat-form-field>
          </div>
-     </div>
-
-     <div class="row">
+    </div>
+    <div class="row">
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.GSIS_ID" name="GSIS_ID" placeholder="GSIS ID No.">
+                <input matInput formControlName="GSIS_ID" name="GSIS_ID" placeholder="GSIS ID No.">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.PAGIBIG_ID" name="PAGIBIG_ID" placeholder="PAG-IBIG ID No.">
+                <input matInput formControlName="PAGIBIG_ID" name="PAGIBIG_ID" placeholder="PAG-IBIG ID No.">
             </mat-form-field>
         </div>
         <div class="col">    
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.PHILHEALTH_ID" name="PHILHEALTH_ID" placeholder="SSS No.">
+            <input matInput formControlName="PHILHEALTH_ID" name="PHILHEALTH_ID" placeholder="SSS No.">
         </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.SSS_ID" name="SSS_ID" placeholder="PhilHealth No.">
+                <input matInput formControlName="SSS_ID" name="SSS_ID" placeholder="PhilHealth No.">
             </mat-form-field>
         </div>
     </div>
-
     <div class="row">
         <div class="col-6">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.R_Address" name="R_Address" placeholder="Residential Address">
+                <input matInput formControlName="R_Address" name="R_Address" placeholder="Residential Address" required>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.R_ZipCode" name="R_ZipCode" placeholder="Zip Code">
+                <input matInput formControlName="R_ZipCode" name="R_ZipCode" placeholder="Zip Code" required>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.R_Tel" name="R_Tel" placeholder="Telephone No.">
+                <input matInput formControlName="R_Tel" name="R_Tel" placeholder="Telephone No.">
             </mat-form-field>
         </div>
       
     </div>
-
     <div class="row">
         <div class="col-6">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.P_Address" name="P_Address" placeholder="Permanent Address">
+                <input matInput formControlName="P_Address" name="P_Address" placeholder="Permanent Address" required>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.P_ZipCode" name="P_ZipCode" placeholder="Zip Code">
+                <input matInput formControlName="P_ZipCode" name="P_ZipCode" placeholder="Zip Code" required>
             </mat-form-field>
         </div>
         <div class="col-3">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.P_Tel" name="P_Tel" placeholder="Telephone No.">
+                <input matInput formControlName="P_Tel" name="P_Tel" placeholder="Telephone No.">
             </mat-form-field>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Email" name="Email" placeholder="Email Address" type="email">
+                <input matInput formControlName="Email" name="Email" placeholder="Email Address" type="email">
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.Cell" name="Cell" placeholder="Cellphone No.">
+                <input matInput formControlName="Cell" name="Cell" placeholder="Cellphone No.">
             </mat-form-field>
         </div>
         <div class="col">                
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.A_Emp_ID" name="A_Emp_ID" placeholder="Agency Employee No.">
+            <input matInput formControlName="A_Emp_ID" name="A_Emp_ID" placeholder="Agency Employee No.">
         </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEmployee.TIN" name="TIN" placeholder="TIN">
+                <input matInput formControlName="TIN" name="TIN" placeholder="TIN" required>
             </mat-form-field>
         </div>
     </div>                   
-    </mat-card-content>
+</mat-card-content>
 </mat-card>
 <mat-card>
-  <mat-card-title>II. Family Background</mat-card-title>
+<mat-card-title>II. Family Background</mat-card-title>
   <div class="row">
       <div class="col">
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.s_surname" name="s_surname" placeholder="Spouse's Surname">
+            <input matInput formControlName="s_surname" name="s_surname" placeholder="Spouse's Surname">
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.s_firstname" name="s_firstname" placeholder="Firstname">
+            <input matInput formControlName="s_firstname" name="s_firstname" placeholder="Firstname">
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.s_middlename" name="s_middlename" placeholder="Middlename">
+            <input matInput formControlName="s_middlename" name="s_middlename" placeholder="Middlename">
         </mat-form-field>
       </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="newEmployee.s_occupation" name="s_occupation" placeholder="Occupation">
+          <input matInput formControlName="s_occupation" name="s_occupation" placeholder="Occupation">
       </mat-form-field>
     </div>
     <div class="col">
       <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="newEmployee.s_employer" name="s_employer" placeholder="Employer/Bus. Name">
+          <input matInput formControlName="s_employer" name="s_employer" placeholder="Employer/Bus. Name">
       </mat-form-field>
     </div>
     <div class="col">
         <mat-form-field class="example-full-width">
-            <input matInput [(ngModel)]="newEmployee.s_address" name="s_address" placeholder="Employer Address">
+            <input matInput formControlName="s_address" name="s_address" placeholder="Employer Address">
         </mat-form-field>
-      </div>
+    </div>
     <div class="col">
       <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="newEmployee.s_tel" name="s_tel" placeholder="Telephone No.">
+          <input matInput formControlName="s_tel" name="s_tel" placeholder="Telephone No.">
       </mat-form-field>
     </div>
 </div>
-  <div class="row">
-      <mat-card class="col">
-            <div class="col">
-                    <mat-form-field class="example-full-width">
-                        <input matInput  [(ngModel)]="newChild.name" name="name" placeholder="Name of Child">
-                    </mat-form-field>
-                </div>
-                <div class="col">
-                    <mat-form-field class="example-full-width">
-                        <input matInput [(ngModel)]="newChild.bday2" name="bday" placeholder="Date of Birth" type="date">
-                    </mat-form-field>
-                </div>
-                <div class="col">
-                    <button mat-raised-button color="primary" (click)="addChild()">Add Child</button>
-                </div>
-      </mat-card>
-      <mat-card class="col">
-            <table class="table table-striped  table-condensed  col-sm-12" >
-                    <thead>
-                        <tr class="table-success">
-                            <th>#</th>
-                            <th>Name of child</th>
-                            <th>Date of birth</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-              <tr *ngFor="let child of children; let i = index;">
-                <td>{{i+1}}</td>
-                 <td>{{child.name}}</td>
-                  <td>{{child.bday2}}</td>
-<td><button type="button" class="btn btn-danger btn-circle" (click)="removeChild(i)"><i class="fa fa-times"></i></button></td>
-                </tr>
-                    </tbody>
-</table>
-      </mat-card>
-
-
-</div>
-<div class="row">
-
-</div>
-<div class="row">
+<button mat-raised-button color="primary" (click)="addChild()">Add Child</button>  
+<div formArrayName="children">
+    <div *ngFor="let comp of firstFormGroup.get('children').controls; let i=index">
+    <div  class="row" [formGroupName]="i">
         <div class="col">
-          <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="newEmployee.f_surname" name="f_surname" placeholder="Father's Surname"  required>
-          </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput  formControlName="name" placeholder="Name of Child">
+            </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="newEmployee.f_firstname" name="f_firstname" placeholder="Firstname"  required>
-          </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput  formControlName="bday" placeholder="Date of Birth" type="date">
+            </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="example-full-width">
-              <input matInput [(ngModel)]="newEmployee.f_middlename" name="f_middlename" placeholder="Middlename"  required>
-          </mat-form-field>
+            <button mat-raised-button color="warn" (click)="removeChild(i)">Delete Child</button>
         </div>
+    </div>   
     </div>
-    <div class="row">
-            <div class="col">
-              <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="newEmployee.m_surname" name="m_surname" placeholder="Mother's Surname"  required>
-                  <mat-hint>Mother's Maiden Name</mat-hint>
-              </mat-form-field>
-            </div>
-            <div class="col">
-              <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="newEmployee.m_firstname" name="m_firstname" placeholder="Firstname"  required>
-              </mat-form-field>
-            </div>
-            <div class="col">
-              <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="newEmployee.m_middlename" name="m_middlename" placeholder="Middlename"  required>
-              </mat-form-field>
-            </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="f_surname" name="f_surname" placeholder="Father's Surname"  required>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="f_firstname" name="f_firstname" placeholder="Firstname"  required>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="f_middlename" name="f_middlename" placeholder="Middlename"  required>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_surname" name="m_surname" placeholder="Mother's Surname"  required>
+            <mat-hint>Mother's Maiden Name</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_firstname" name="m_firstname" placeholder="Firstname"  required>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_middlename" name="m_middlename" placeholder="Middlename"  required>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="f_surname" name="f_surname" placeholder="Father's Surname"  required>
+            </mat-form-field>
         </div>
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="f_firstname" name="f_firstname" placeholder="Firstname"  required>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="f_middlename" name="f_middlename" placeholder="Middlename"  required>
+            </mat-form-field>
+        </div>
+</div>
+<div class="row">
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_surname" name="m_surname" placeholder="Mother's Surname"  required>
+            <mat-hint>Mother's Maiden Name</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_firstname" name="m_firstname" placeholder="Firstname"  required>
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="m_middlename" name="m_middlename" placeholder="Middlename"  required>
+        </mat-form-field>
+    </div>
+</div>
 </mat-card>
+
+
 <mat-card>
-    <mat-card-title>II. Educational Background</mat-card-title>
-    <div class="row">
-        <div class="col-4">
-                <mat-form-field>
-                        <mat-select placeholder="Level" [(ngModel)]="newEduc.level" name="level">
-                          <mat-option  value="Elementary">Elementary</mat-option>
-                          <mat-option  value="Secondary">Secondary</mat-option>
-                          <mat-option  value="Vocational /Trade Course">Vocational /Trade Course</mat-option>
-                          <mat-option  value="College">College</mat-option>
-                          <mat-option  value="Graduate Studies">Graduate Studies</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+        <mat-card-title>II. Educational Background</mat-card-title>
+        <button mat-raised-button color="primary" (click)="addEducation()">Add Education</button>  
+        <div formArrayName="education">
+            <div *ngFor="let comp of firstFormGroup.get('education').controls; let i=index">
+                <div [formGroupName]="i">
+                    <div class="row">
+                        <div class="col-4">
+                            <mat-form-field>
+                                    <mat-select placeholder="Level"  formControlName="level">
+                                    <mat-option  value="Elementary">Elementary</mat-option>
+                                    <mat-option  value="Secondary">Secondary</mat-option>
+                                    <mat-option  value="Vocational /Trade Course">Vocational /Trade Course</mat-option>
+                                    <mat-option  value="College">College</mat-option>
+                                    <mat-option  value="Graduate Studies">Graduate Studies</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                        </div>
+                        <div class="col-8">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput formControlName="school" placeholder="Name of School">
+                                    <mat-hint>Write in full</mat-hint>
+                                </mat-form-field>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <mat-form-field class="example-full-width">
+                                <input matInput formControlName="course" placeholder="Degree Course">
+                                <mat-hint>Write in full</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                        <mat-form-field class="example-full-width">
+                                <input matInput formControlName="yg" placeholder="Year Graduated" type="number">
+                        </mat-form-field>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="hg" placeholder="Highest Grade/Level/Units Earned">
+                                <mat-hint>If not graduated</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="from" placeholder="From" type="number">
+                                <mat-hint>Inclusive dates of attendance</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="to" placeholder="To" type="number">
+                                <mat-hint>Inclusive dates of attendance</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="scholarship" placeholder="Scholarship/Academic Honors Received">
+                            </mat-form-field>
+                        </div> 
+                        <div class="col">
+                                <button mat-raised-button color="warn" (click)="removeEducation()">Remove Education</button>
+                        </div>    
+                    </div> 
+                </div>
+            </div>
         </div>
-        <div class="col-8">
-                <mat-form-field class="example-full-width">
-                        <input matInput [(ngModel)]="newEduc.school" name="school" placeholder="Name of School">
-                        <mat-hint>Write in full</mat-hint>
-                </mat-form-field>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-8">
-            <mat-form-field class="example-full-width">
-                    <input matInput [(ngModel)]="newEduc.course" name="course" placeholder="Degree Course">
-                    <mat-hint>Write in full</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col-4">
-            <mat-form-field class="example-full-width">
-                    <input matInput [(ngModel)]="newEduc.yg" name="yg" placeholder="Year Graduated" type="number">
-            </mat-form-field>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEduc.hg" name="hg" placeholder="Highest Grade/Level/Units Earned">
-                <mat-hint>If not graduated</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEduc.from" name="from" placeholder="From" type="number">
-                <mat-hint>Inclusive dates of attendance</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEduc.to" name="to" placeholder="To" type="number">
-                <mat-hint>Inclusive dates of attendance</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="newEduc.scholarship" name="scholarship" placeholder="Scholarship/Academic Honors Received">
-            </mat-form-field>
-        </div> 
-        <div class="col">
-                <button mat-raised-button color="primary" (click)="addEducation()">Add Education</button>
-            </div>      
-    </div>
-    <div class="row">
-            <table class="table table-striped table-bordered " >
-                    <thead>
-                      <tr class="table-success">
-                          <th>Level</th>
-                          <th>Name of School</th>
-                          <th>Degree Course</th>
-                          <th>Year Graduated</th>
-                          <th>Highest Grade/ Level/ Units Earned</th>
-                          <th>Scolarship/ Academic Honors Received</th>
-                          <th>From</th>
-                          <th>To</th>  
-                          <th>Action</th>
-                
-                           
-                      </tr>
-                  </thead>
-                  <tbody>
-                     <tr *ngFor="let educ of educations; let i = index;">
-                       <td>{{educ.level}}</td>
-                       <td>{{educ.school}}</td>
-                       <td>{{educ.course}}</td>
-                       <td>{{educ.yg}}</td>
-                       <td>{{educ.hg}}</td>
-                        <td>{{educ.scholarship}}</td>
-                       <td>{{educ.from}}</td>
-                       <td>{{educ.to}}</td>
-                     
-                       <td><button type="button" class="btn btn-danger btn-circle" (click)="removeEducation(i)"><i class="fa fa-times"></i></button></td>
-                     </tr>
-                  </tbody>			        
-                         </table>
-    </div>
-  </mat-card> 
+    
+      
+        
+</mat-card> 
+<div>
+    <button mat-button matStepperNext [disabled]="!firstFormGroup.valid" (click)="savePage1()">Next</button>
+</div>
+</form>
+</div>
 
 
-  <div>
-    <button mat-button matStepperNext [disabled]="!pdsForm.valid" (click)="savePage1()">Next</button>
-</div>
-  </form>
-</div>
+
+
+
+
+
+
+
+
+
+
+

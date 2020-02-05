@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
+    public barChartLegend = true;
 
   birthday:Array<any>;
 
@@ -46,7 +47,11 @@ export class DashboardComponent implements OnInit {
   public pieChartSalaryGradeLabels: Label[] = [];
 
   public pieCharStepData: SingleDataSet = [];
-  public pieChartStepLabels: Label[] = ['SI 1','SI 2','SI 3','SI 4','SI 5','SI 6','SI 7','SI 8'];
+  public pieChartStepLabels: Label[] = [];
+  pieChartColors: Array < any > = [{
+    backgroundColor:  ["#e84351", "#434a54", "#3ebf9b", "#4d86dc", "#f3af37", "#9B59B6",
+    "#45B39D", "#1F618D", "#B03A2E", "#717D7E", "#27AE60", "#9A7D0A", "#e84351", "#434a54", "#3ebf9b", "#4d86dc", "#f3af37", "#9B59B6"]
+ }];
   
   constructor(private hrmisService: HrmisService) {
 
@@ -104,24 +109,31 @@ export class DashboardComponent implements OnInit {
 
   getAgeBracket(){
     this.hrmisService.getAgeBracket().subscribe((data : any)=>{
+      console.log(data);
       this.barChartAgeData = [
-        {data: [ data.two,data.three,data.four,data.five ], label:'#of Employee'},
-        {data: [ data.ave,data.ave,data.ave,data.ave ], label:'Average Age', type: 'line'}
-      ]
+        {data: [ data.two,data.three,data.four,data.five ], label:"#of Employee"},
+        {data: [ data.ave,data.ave,data.ave,data.ave ], label:"Average Age"}
+      ];
+      console.log(this.barChartAgeData);
 
     }); 
   }
 
   getSalaryGrade () {
     this.hrmisService.getSalaryGrade().subscribe((data : any)=>{
-      this.pieChartSalaryGradeData = [ data[0] ];
+      this.pieChartSalaryGradeData = [ data[0].data ];
       this.pieChartSalaryGradeLabels = data[1].label;
     }); 
   }
 
   getStepIncrement () {
     this.hrmisService.getStepIncrement().subscribe((data : any)=>{
-      this.pieCharStepData = [ data ];
+      for (var key in data) {
+       this.pieCharStepData.push(data[key].data);
+       this.pieChartStepLabels.push("SI " + data[key].si);
+  
+      }
+
     }); 
   }
 

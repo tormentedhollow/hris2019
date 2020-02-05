@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 class Voluntary {
   Org_Name: string;
@@ -34,6 +34,20 @@ export class Page3Component implements OnInit {
   skills: Array<any> = [];
   nonacademic: Array<any> = [];
   membership: Array<any> = [];
+
+  @Output() onSaveVoluntary = new EventEmitter<any>();
+  @Output() onSaveTraining = new EventEmitter<any>();
+  @Output() onSaveSkills = new EventEmitter<any>();
+  @Output() onSaveNA = new EventEmitter<any>();
+  @Output() onSaveMembership= new EventEmitter<any>();
+
+  savePage3(){
+    this.onSaveVoluntary.emit(this.voluntaries);
+    this.onSaveTraining.emit(this.trainings);
+    this.onSaveSkills.emit(this.skills);
+    this.onSaveNA.emit(this.nonacademic);
+    this.onSaveMembership.emit(this.membership);
+  }
 
   constructor() { 
     this.newVol = new Voluntary();

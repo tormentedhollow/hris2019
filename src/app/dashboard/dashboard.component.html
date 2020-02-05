@@ -56,7 +56,7 @@
               [labels]="pieChartSalaryGradeLabels"
               [chartType]="pieChartType"
               [options]="pieChartOptions"
-        
+              [colors]="pieChartColors"
               [legend]="pieChartLegend">
             </canvas>
           </div>           
@@ -79,7 +79,7 @@
               [labels]="pieChartStepLabels"
               [chartType]="pieChartType"
               [options]="pieChartOptions"
-        
+              [colors]="pieChartColors"
               [legend]="pieChartLegend">
             </canvas>
           </div>           
@@ -129,6 +129,7 @@
         
             [chartType]="barChartType"
             [options]="pieChartOptions"
+            [legend]="pieChartLegend"
       
             >
           </canvas>
@@ -145,7 +146,7 @@
         </mat-card-title>
       </mat-card-header>
 
-      <mat-card-content>       
+      <mat-card-content>     
         <div style="display: block">
           <canvas baseChart height="300"
             [data]="barChartAgeData"
@@ -153,7 +154,7 @@
             [chartType]="barChartType"
             [options]="pieChartOptions"
       
-            [legend]="pieChartLegend">
+            [legend]="barChartLegend">
           </canvas>
         </div>           
       </mat-card-content>

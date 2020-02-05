@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 class CSE {
   CS: string;
@@ -33,10 +34,19 @@ export class Page2Component implements OnInit {
   CSEs: Array<any> = [];
   WEs: Array<any> = [];
 
+  @Output() onSaveCSE = new EventEmitter<any>();
+  @Output() onSaveWorkExperience = new EventEmitter<any>();
+
+  savePage2(){
+    this.onSaveCSE.emit(this.CSEs);
+    this.onSaveWorkExperience.emit(this.WEs);
+  }
+
   constructor() {
     this.newCSE = new CSE();
     this.newWE = new WorkExperience();
    }
+
 
    addCSE(){
     if( this.newCSE ){
@@ -61,6 +71,7 @@ export class Page2Component implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

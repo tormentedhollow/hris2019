@@ -6,6 +6,7 @@ import { PdsComponent } from './pds/pds.component';
 import { DetailComponent } from './employees/detail/detail.component';
 import { PropertyComponent } from './property/property.component';
 import { ViewComponent } from './property/view/view.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
       path: 'dashboard',
       component: DashboardComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'employee',
@@ -30,10 +35,10 @@ const routes: Routes = [
     path: 'details/:id',
     component: DetailComponent
     },
-    {
-      path: 'viewProperty',
-      component: ViewComponent
-      },
+  {
+    path: 'viewProperty',
+    component: ViewComponent
+  },
 ];
 
 @NgModule({
@@ -43,4 +48,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routedComponents = [DashboardComponent, EmployeesComponent, PropertyComponent,
-  PdsComponent, DetailComponent, ViewComponent];
+  PdsComponent, DetailComponent, ViewComponent, LoginComponent];

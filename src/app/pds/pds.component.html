@@ -2,7 +2,39 @@
   
         <!-- <mat-spinner *ngIf="show"></mat-spinner> -->
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step>
+            <mat-step [completed]="false" [stepControl]="myFormGroup">
+                    <ng-template matStepLabel>Page I</ng-template>
+                    <app-page1 (notify)='onNotify($event)' 
+                    (onSaveEducation)='saveEducation($event)'></app-page1>
+                </mat-step> 
+
+                <mat-step>
+                        <ng-template matStepLabel>Page II</ng-template>
+                        <app-page2 (onSaveCSE)='saveCSE($event)' 
+                        (onSaveWorkExperience)='saveWorkExperience($event)'></app-page2>
+                </mat-step> 
+                <mat-step>
+                    <ng-template matStepLabel>Page III</ng-template>
+                    <app-page3 (onSaveVoluntary)='saveVoluntary($event)'
+                    (onSaveTraining)='saveTraining($event)'
+                    (onSaveSkills)='saveSkills($event)'
+                    (onSaveNA)='saveNA($event)'
+                    (onSaveMembership)='saveMembership($event)'></app-page3>
+            </mat-step> 
+            <mat-step >
+                <ng-template matStepLabel>Page IV</ng-template>
+                <app-page4></app-page4>
+        </mat-step> 
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        You are now done.
+                  
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset(); done();">Reset</button>
+                        </div>
+                    </mat-step>
+        <!-- <mat-step>
             <ng-template matStepLabel>Page 1</ng-template>
             <app-page1 (onSaveEmployee)="saveEmployee($event);"></app-page1>
         </mat-step>
@@ -21,14 +53,12 @@
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             You are now done.
-            <div>
-                    <mat-spinner></mat-spinner>
-            </div>
+      
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
             </div>
-        </mat-step>
+        </mat-step> -->
     </mat-horizontal-stepper>
 
 </div>

@@ -3,6 +3,11 @@
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
     <div class="example-container mat-elevation-z8">
+
+        <mat-card class="example-loading-shade" *ngIf="isLoading">
+            <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+          </mat-card>
+          
 <table mat-table [dataSource]="Employees">
 
   <!--- Note that these columns can be defined in any order.
@@ -50,7 +55,7 @@
           <td mat-cell *matCellDef="let element"> 
               <button mat-raised-button color="primary" ><i class="fa fa-eye text-center" (click)="viewEmployee(element)" aria-hidden="true">  View</i></button> 
               <button mat-raised-button color="accent" ><i class="fa fa-edit text-center" aria-hidden="true">  Edit</i></button>
-              <button mat-raised-button color="warn" ><i class="fa fa-camera text-center" aria-hidden="true">  Photo</i></button>
+              <button mat-raised-button color="warn" ><i class="fa fa-camera text-center" (click)="onUpload(element)" aria-hidden="true">  Photo</i></button>
           </td>
         </ng-container>
 
