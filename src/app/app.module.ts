@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './_shared';
 import {AnimationsService } from './_animations/index';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { EmployeesComponent, UploadDialog } from './employees/employees.component';
 import { PdsComponent } from './pds/pds.component';
 import { Page1Component } from './pds/page1/page1.component';
 import { Page2Component } from './pds/page2/page2.component';
@@ -39,7 +39,8 @@ import { CoreModule } from './_core/core.module';
     DialogOverviewExampleDialog2,
     ViewComponent,
     LoginComponent,
-    LogoutConfirmationDialogComponent
+    LogoutConfirmationDialogComponent,
+    UploadDialog
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import { CoreModule } from './_core/core.module';
     SharedModule,
 
   ],
-  entryComponents: [ DialogOverviewExampleDialog, DialogOverviewExampleDialog2, LogoutConfirmationDialogComponent],                                                                                       
+  entryComponents: [ DialogOverviewExampleDialog, DialogOverviewExampleDialog2, LogoutConfirmationDialogComponent, UploadDialog],                                                                                       
   providers: [AnimationsService],
   bootstrap: [AppComponent]
 })

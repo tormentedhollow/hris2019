@@ -5,7 +5,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Router, NavigationExtras } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
@@ -14,7 +13,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class PropertyComponent implements OnInit {
   Employees: any;
-
+  isLoading = true;
   displayedColumns: string[] = ['Photo', 'Sname', 'Fname', 'Mname', 'DoB', 'division', 'actions'];
 
   constructor(
@@ -28,7 +27,8 @@ export class PropertyComponent implements OnInit {
     this.hrmisService.getEmployee().subscribe((data : any)=>{
       this.Employees = new MatTableDataSource(data.data);
       this.changeDetectorRefs.detectChanges();
-      console.log(data);
+      this.isLoading = false;
+      console.log(this.Employees);
     });
   };
 

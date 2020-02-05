@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Action, select, Store, createSelector } from '@ngrx/store';
+import {  Store } from '@ngrx/store';
 import { AppState, ActionAuthLogin } from '../_core/core.module'
+import { HrmisService } from '@app/_services/hrmis.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [HrmisService]
 })
 export class LoginComponent implements OnInit {
 
@@ -17,11 +20,22 @@ export class LoginComponent implements OnInit {
   });
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
-      this.store.dispatch(new ActionAuthLogin());
+     // console.log(this.form.value);
+      this.hrmisService.login(this.form.value.username, this.form.value.password)
+      .subscribe((data: any)=>{
+        console.log(data);
+        if(data.data == false){
+          this._snackBar.open('Please Try Again!!!', 'Ok', {
+            duration: 2000,
+          });
+        }else{
+          this.store.dispatch(new ActionAuthLogin());
+        }
+      })
+      
     }
   }
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private hrmisService: HrmisService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }

@@ -107,6 +107,15 @@ export class HrmisService {
         );;
     }
 
+    login(username, password) {
+      const url = `${this.apiRoot}/authenticate`;
+      return this.http.post(url, { username, password }).pipe(
+        tap(_ => console.log('success login')),
+        catchError(this.handleError('login', []))
+      );
+   
+    }
+
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

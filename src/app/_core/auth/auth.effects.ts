@@ -23,10 +23,10 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   login = this.actions$.pipe(
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
-    tap(() =>
-      //this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true })
+    tap(() =>{
+      this.router.navigate(['']);
       localStorage.setItem(`AUTH_KEY`, JSON.stringify({ isAuthenticated: true }))
-    )
+    })
   );
 
   @Effect({ dispatch: false })
